@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jeff-media</groupId>
-    <artifactId>armor-equip-event</artifactId>
-    <version>1.0.2</version>
+    <groupId>io.github.roughlyunderscore</groupId>
+    <artifactId>delayed-armor-equip-event</artifactId>
+    <version>1.0.2-delayed</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -12,27 +12,7 @@
         <license.licenseName>gpl_v3</license.licenseName>
     </properties>
 
-    <description>Provides an ArmorEquipEvent for Bukkit.</description>
-    <inceptionYear>2022</inceptionYear>
-    <url>https://github.com/JEFF-Media-GbR/Spigot-ArmorEquipEvent</url>
-    <name>ArmorEquipEvent</name>
-
-    <scm>
-        <url>https://github.com/JEFF-Media-GbR/JsonConfigurationSerialization</url>
-    </scm>
-
-    <developers>
-        <developer>
-            <id>mfnalex</id>
-            <name>Alexander Majka</name>
-            <email>mfnalex@jeff-media.com</email>
-        </developer>
-    </developers>
-
-    <organization>
-        <name>JEFF Media GbR</name>
-        <url>https://www.jeff-media.com/</url>
-    </organization>
+    <name>DelayedArmorEquipEvent</name>
 
     <licenses>
         <license>
@@ -41,62 +21,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <profiles>
-        <profile>
-            <id>upload-to-central</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                        <!-- https://stackoverflow.com/questions/70153962/nexus-staging-maven-plugin-maven-deploy-failed-an-api-incompatibility-was-enco -->
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.thoughtworks.xstream</groupId>
-                                <artifactId>xstream</artifactId>
-                                <version>1.4.15</version> <!-- apparently this needs to be exactly this version -->
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </build>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <id>sign-jar</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <build>
         <plugins>
@@ -216,7 +140,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.20.6-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -227,12 +151,5 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>jeff-media-public</id>
-            <url>https://repo.jeff-media.com/public/</url>
-        </repository>
-    </distributionManagement>
 
 </project>

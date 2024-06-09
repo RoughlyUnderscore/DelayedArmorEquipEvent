@@ -36,11 +36,11 @@ public final class ArmorEquipEvent extends PlayerEvent implements Cancellable {
 	 * @param plugin Plugin to call this event from
 	 */
 	public static void registerListener(JavaPlugin plugin) {
-		Bukkit.getServer().getPluginManager().registerEvents(new ArmorListener(getBlockedMaterialNames(plugin)), plugin);
+		Bukkit.getServer().getPluginManager().registerEvents(new ArmorListener(getBlockedMaterialNames(plugin), plugin), plugin);
 		try{
 			//Better way to check for this? Only in 1.13.1+?
 			Class.forName("org.bukkit.event.block.BlockDispenseArmorEvent");
-			Bukkit.getServer().getPluginManager().registerEvents(new DispenserArmorListener(), plugin);
+			Bukkit.getServer().getPluginManager().registerEvents(new DispenserArmorListener(plugin), plugin);
 		} catch(Exception ignored) {
 
 		}
